@@ -19,36 +19,31 @@ namespace KinoMir.Tests
 
             driver.Navigate().GoToUrl("https://www.kino-mir.ru");
 
-            // Go schedule           
-            // Перейти на вкладку "Расписание"
+            // Go schedule   
             wait.Until(d => driver.FindElement(By.XPath(TestConstants.Schedule)).Displayed);
             var scheduleLocator = driver.FindElement(By.XPath(TestConstants.Schedule));
             Assert.True(scheduleLocator.Displayed);
             scheduleLocator.Click();
 
-            // Assert your city Novosibirsk     
-            // Подтвердить, что ваш город Новосибирск                     
+            // Assert your city Novosibirsk                   
             wait.Until(d => driver.FindElement(By.XPath(TestConstants.CityButton)).Displayed);
             var cityLocator = driver.FindElement(By.XPath(TestConstants.CityButton));
             Assert.True(cityLocator.Displayed);
             cityLocator.Click();
 
-            // Choose day tomorrow
-            // Выбрать день "Завтра"           
+            // Choose day tomorrow          
             wait.Until(d => driver.FindElement(By.XPath(TestConstants.Tomorrow)).Displayed);
             var tomorrowLocator = driver.FindElement(By.XPath(TestConstants.Tomorrow));
             Assert.True(tomorrowLocator.Displayed);
             tomorrowLocator.Click();
 
-            // Choose seance 
-            // Выбрать сеанс                  
+            // Choose seance            
             wait.Until(d => driver.FindElement(By.ClassName(TestConstants.Seance)).Displayed);
             var seanceLocator = driver.FindElement(By.ClassName(TestConstants.Seance));
             Assert.True(seanceLocator.Displayed);
             seanceLocator.Click();
 
             // Choose two places
-            // Выбрать два места
             wait.Until(d => driver.FindElement(By.Id("kw-iframe")).Displayed);
             var seatsFrame2 = driver.FindElement(By.Id("kw-iframe"));
             Assert.True(seatsFrame2.Displayed);
@@ -81,14 +76,12 @@ namespace KinoMir.Tests
             while (ticketsChosen.Count < 2);
 
             // Buy tickets
-            // Нажать "Купить"
             wait.Until(d => driver.FindElement(By.ClassName(TestConstants.BuyButton)).Displayed);
             var buyButtonLocator = driver.FindElement(By.ClassName(TestConstants.BuyButton));
             Assert.True(buyButtonLocator.Displayed);
             buyButtonLocator.Click();
 
             // Click authorization
-            // Нажать авторизоваться
             wait.Until(d => driver.FindElement(By.XPath(TestConstants.AuthorizationButton)).Displayed);
             var authorizationButtonLocator = driver.FindElement(By.XPath(TestConstants.AuthorizationButton));
             Assert.True(authorizationButtonLocator.Displayed);
@@ -99,7 +92,6 @@ namespace KinoMir.Tests
             string secondTicker = ticketsChosen[1].Text;
 
             // Assert
-            // Проверки
             Assert.NotEmpty(firstTicker);
             Assert.NotEmpty(secondTicker);
 
